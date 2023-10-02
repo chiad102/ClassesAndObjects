@@ -1,5 +1,7 @@
 package pro.sky.java.course1;
 
+import java.util.Objects;
+
 public class Book {
     private String name;
     private Author author;
@@ -40,10 +42,21 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book {" +
-                "bookName = '" + name + '\'' +
-                ", author = " + author.name + " " + author.surname +
-                ", date = " + date +
-                '}';
+        return "Книга : " +
+                "Название = '" + name + '\'' +
+                ", Автор = " + author.toString() +
+                ", Год = " + date;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book book)) return false;
+        return getDate() == book.getDate() && Objects.equals(getName(), book.getName()) && Objects.equals(getAuthor(), book.getAuthor());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getAuthor(), getDate());
     }
 }
