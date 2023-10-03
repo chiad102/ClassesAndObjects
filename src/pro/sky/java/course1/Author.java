@@ -3,12 +3,12 @@ package pro.sky.java.course1;
 import java.util.Objects;
 
 public class Author {
-    String name;
-    String surname;
+    private String name;
+    private String surname;
 
     public Author(String name, String surname) {
         if (name.isEmpty() || surname.isEmpty()) {
-            throw new RuntimeException("Книга без автора существовать не может.");
+            throw new RuntimeException("Имя и фамилия не могут быть пустыми.");
         }
         this.name = name;
         this.surname = surname;
@@ -18,16 +18,8 @@ public class Author {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getSurname() {
         return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     @Override
@@ -39,6 +31,7 @@ public class Author {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Author author)) return false;
+        if (getClass() != o.getClass()) return false;
         return Objects.equals(getName(), author.getName()) && Objects.equals(getSurname(), author.getSurname());
     }
 

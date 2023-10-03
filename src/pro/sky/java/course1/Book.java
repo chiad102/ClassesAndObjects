@@ -28,14 +28,6 @@ public class Book {
         return date;
     }
 
-    public void setName(String bookName) {
-        this.name = bookName;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
     public void setDate(int date) {
         this.date = date;
     }
@@ -52,6 +44,7 @@ public class Book {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Book book)) return false;
+        if (getClass() != o.getClass()) return false;
         return getDate() == book.getDate() && Objects.equals(getName(), book.getName()) && Objects.equals(getAuthor(), book.getAuthor());
     }
 
